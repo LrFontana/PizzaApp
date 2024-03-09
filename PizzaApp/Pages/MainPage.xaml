@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaApp.Pages.MainPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="DarkGoldenrod">
+
+    <Grid RowDefinitions="Auto, *, Auto"
+          Padding="15, 25">
+        <Label Grid.Row="0"
+               Text="Leo's  Pizza"
+               FontSize="90"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"/>
+
+        <Image Grid.Row="1"
+               Margin="80"
+               Source="pizzapagprincipal.png"
+               HeightRequest="350"
+               WidthRequest="350"
+               VerticalOptions="StartAndExpand"
+               HorizontalOptions="Center"/>
+
+        <VerticalStackLayout Grid.Row="2"
+                             Spacing="10">
+            <Label Text="Desde Italia hasta tu cocina."
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   />
+            <Label Text="Prueba las verdaderas pizzas italianas echas con ingredientes 100% originales"
+                   FontSize="25"
+                   LineHeight="1.2"
+                   Padding="0, 45"/>
+            <Border StrokeShape="RoundRectangle 25"
+                    StrokeThickness="0"
+                    Background="Goldenrod"
+                    HeightRequest="50">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Border.GestureRecognizers>
+                
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Spacing="30"
+                                       Padding="0, 5">
+                    <Label Text="Iniciar" 
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           VerticalOptions="Center"/>
+                    <Image Source="arrowright.png"
+                           VerticalOptions="Center"
+                           HeightRequest="30"/>
+                </HorizontalStackLayout>
+
+            </Border>
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>

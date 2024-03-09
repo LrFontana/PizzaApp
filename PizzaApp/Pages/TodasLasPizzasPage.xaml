@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:PizzaApp.ViewModels"
+             xmlns:models="clr-namespace:PizzaApp.Models"
+             xmlns:toolKit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="PizzaApp.Pages.TodasLasPizzasPage"
+             Title="Todas Las Pizzas"
+             x:DataType="viewModels:TodasLasPizzasViewModel">
+    
+    <ContentPage.Triggers>
+        <DataTrigger TargetType="ContentPage"
+                     Binding="{Binding TerminoDeBusqueda}"
+                     Value="True">
+            
+            <Setter Property="Title" Value="Buscar Pizza"/>
+
+        </DataTrigger>
+
+    </ContentPage.Triggers>
+
+    <Grid RowDefinitions="Auto, *">
+
+        <SearchBar Grid.Row="0"
+                   x:Name="barraDeBusqueda"
+                   Placeholder="Buscar pizza..."
+                   PlaceholderColor="Goldenrod"
+                   CancelButtonColor="Red"
+                   TextColor="DarkGoldenrod"
+                   ios:SearchBar.SearchBarStyle="Minimal"
+                   SearchCommand="{Binding BuscarPizzasCommand}"
+                   SearchCommandParameter="{Binding Source={x:Reference barraDeBusqueda}, Path=Text}"
+                   TextChanged="BarraDeBusqueda_ElTextoCambio"/>
+
+        <ScrollView Grid.Row="1"
+                    Margin="10">
+
+            <VerticalStackLayout>
+                
+                <CollectionView ItemsSource="{Binding Pizzas}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.ItemTemplate>
+                        
+                        <DataTemplate x:DataType="models:ModeloPizza">
+
+                            <Border StrokeShape="RoundRectangle 10"
+                                    StrokeThickness="0"
+                                    BackgroundColor="PaleGoldenrod"
+                                    Padding="15"
+                                    Margin="5">
+
+                                <Grid ColumnDefinitions="150, *"
+                                      ColumnSpacing="10">
+
+                                    <Image Grid.Column="0"
+                                           Source="{Binding Imagen}"
+                                           HeightRequest="150"
+                                           WidthRequest="150"/>
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         VerticalOptions="Center"
+                                                         Spacing="10">
+
+                                        <Label Text="{Binding Nombre}"
+                                               FontSize="35"/>
+
+                                        <Grid ColumnDefinitions="*, *">
+
+                                            <Label Grid.Column="0"
+                                                   Text="{Binding Precio, StringFormat='${0:N2}'}"
+                                                   FontSize="20"/>
+
+                                            <HorizontalStackLayout Grid.Column="1"
+                                                                   HorizontalOptions="End"
+                                                                   VerticalOptions="Center"
+                                                                   Spacing="2">
+                                                <Label Text="4"
+                                                       FontSize="15"
+                                                       FontAttributes="Bold"/>
+                                                <Image Source="star.png"
+                                                       HeightRequest="20"
+                                                       WidthRequest="20">
+
+                                                    <Image.Behaviors>
+                                                        <toolKit:IconTintColorBehavior TintColor="DarkGoldenrod"/>
+                                                    </Image.Behaviors>
+                                                </Image>
+
+                                            </HorizontalStackLayout>
+
+                                        </Grid>
+
+                                        <Border StrokeShape="RoundRectangle 25"
+                                                StrokeThickness="0"
+                                                BackgroundColor="Gold"
+                                                HeightRequest="45"
+                                                HorizontalOptions="Center"
+                                                Padding="45, 5"
+                                                VerticalOptions="End">
+
+                                            <HorizontalStackLayout Spacing="2"
+                                                                   Padding="2">
+
+                                                <Label Text="Ver mas..."
+                                                       VerticalOptions="Center"
+                                                       FontSize="16"/>
+                                                <Image Source="arrowright.png"
+                                                       HeightRequest="30"
+                                                       VerticalOptions="Center"/>
+
+                                            </HorizontalStackLayout>
+
+                                            <Border.GestureRecognizers>
+
+                                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:TodasLasPizzasViewModel}}, Path=IrADetallePageCommand}"
+                                                                      CommandParameter="{Binding .}"/>
+                                                
+                                            </Border.GestureRecognizers>
+                                            
+                                        </Border>
+
+                                    </VerticalStackLayout>
+                                    
+                                </Grid>
+                                
+                            </Border>                           
+
+                        </DataTemplate>
+                        
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.EmptyView>
+                        
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center">
+
+                            <BoxView HeightRequest="200"
+                                     Color="White"/>
+
+                            <Label Text="No se encontraron pizzas."
+                                   FontSize="35"
+                                   TextColor="Gray"
+                                   HorizontalTextAlignment="Center">
+
+                                <Label.Triggers>
+                                    
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding Buscando}"
+                                                 Value="True">
+                                        <Setter Property="Text"
+                                                Value="Buscando..."/>
+                                    </DataTrigger>
+                                    
+                                </Label.Triggers>
+                                    
+                            </Label>
+
+                        </VerticalStackLayout>
+                        
+                    </CollectionView.EmptyView>
+                    
+                </CollectionView>              
+                    
+            </VerticalStackLayout>
+            
+        </ScrollView>
+        <ActivityIndicator Grid.Row="2"
+                           IsRunning="{Binding Buscando}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Color="DarkGoldenrod"/>
+
+    </Grid>
+    
+</ContentPage>

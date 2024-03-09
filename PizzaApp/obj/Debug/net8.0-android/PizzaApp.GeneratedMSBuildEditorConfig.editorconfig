@@ -1,0 +1,77 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PizzaApp
+build_property.ProjectDir = D:\Proyectos C# en visual studio\PizzaApp\PizzaApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Pages/CarritoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Pages.CarritoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\CarritoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\CarritoPage.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Pages/CerrarPagina.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Pages.CerrarPagina.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\CerrarPagina.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\CerrarPagina.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Pages/DetallesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Pages.DetallesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\DetallesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\DetallesPage.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Pages/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Pages.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\HomePage.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Pages/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Pages.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Pages/TodasLasPizzasPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Pages.TodasLasPizzasPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\TodasLasPizzasPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\TodasLasPizzasPage.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[D:/Proyectos C\# en visual studio/PizzaApp/PizzaApp/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PizzaApp.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

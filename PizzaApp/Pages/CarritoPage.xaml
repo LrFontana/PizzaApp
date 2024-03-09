@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:PizzaApp.ViewModels"
+             xmlns:models="clr-namespace:PizzaApp.Models"
+             xmlns:toolKit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="PizzaApp.Pages.CarritoPage"
+             Title="Carrito"
+             x:DataType="viewModels:CarritoViewModel"
+             BackgroundColor="PaleGoldenrod">
+
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem Text="Limpiar Carrito"
+                     Command="{Binding LimpiarCarritoCommand}"/>
+        
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+
+        <ScrollView>
+
+            <VerticalStackLayout Padding="10">
+
+                <CollectionView ItemsSource="{Binding ModeloPizzas}">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                            ItemSpacing="25"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.EmptyView>
+
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Spacing="15">
+
+                            <BoxView HeightRequest="200"
+                                     Color="White"/>
+
+                            <Label Text="El carrito esta vacio."
+                                   FontSize="35"
+                                   TextColor="Gray"
+                                   HorizontalTextAlignment="Center">                                   
+
+                            </Label>
+
+                            <Button Text="Ver todas las pizzas."
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="Goldenrod"
+                                    Clicked="Boton_Clickeado"/>
+
+                        </VerticalStackLayout>
+
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate x:DataType="models:ModeloPizza">
+
+                            <Border StrokeShape="RoundRectangle 15"
+                                    StrokeThickness="0"
+                                    BackgroundColor="White"
+                                    Padding="10">   
+
+                                <Grid ColumnDefinitions="25, Auto, 50, *, 80, 25">
+
+                                    <Label Grid.Column="0"
+                                           Text="{Binding CantidadDePizza}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           FontSize="20"/>
+
+                                    <Label Grid.Column="1"
+                                           Text="x"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           FontSize="20"/>
+
+                                    <Image Grid.Column="2"
+                                           Source="{Binding Imagen}"
+                                           HeightRequest="50"
+                                           WidthRequest="50"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+
+                                    <VerticalStackLayout Grid.Column="3"
+                                                         VerticalOptions="Center"
+                                                         Spacing="5">   
+
+                                        <Label Text="{Binding Nombre}"/>
+                                        <Label Text="{Binding Precio, StringFormat='${0:N2}'}"/>
+
+                                    </VerticalStackLayout>
+
+                                    <Label Grid.Column="4"
+                                           Text="{Binding Total, StringFormat='${0:N2}'}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           FontAttributes="Bold"/>
+
+                                    <Image Grid.Column="5"
+                                           Source="trash.png"
+                                           HeightRequest="25"
+                                           WidthRequest="25"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"> 
+
+                                        <Image.Behaviors>
+                                            <toolKit:IconTintColorBehavior TintColor="Red"/>
+                                        </Image.Behaviors>
+
+                                        <Image.GestureRecognizers>
+
+                                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:CarritoViewModel}}, Path=EliminarItemDelCarritoCommand}"
+                                                                  CommandParameter="{Binding Nombre}"/>
+
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </VerticalStackLayout>
+            
+        </ScrollView>
+
+        <Border StrokeShape="RoundRectangle 40"
+                BackgroundColor="DarkGoldenrod"
+                StrokeThickness="0"
+                VerticalOptions="End"
+                Margin="20"
+                Padding="25">
+
+            <Grid ColumnDefinitions="*, *">
+
+                <Label Grid.Column="0"
+                       Padding="18, 0"
+                       TextColor="White"
+                       VerticalOptions="Center">
+                    
+                    <Label.FormattedText>
+                        
+                        <FormattedString>
+                            
+                            <Span Text="Total: &#10;"
+                                  FontSize="20"/>
+
+                            <Span Text="{Binding MontoTotal, StringFormat='${0:N2}'}"
+                                  FontSize="20"
+                                  FontAttributes="Bold"/>
+
+                        </FormattedString>
+                        
+                    </Label.FormattedText>
+                    
+                </Label>
+
+                <Button Grid.Column="1"
+                        Text="Confirmar Orden"
+                        BackgroundColor="Goldenrod"
+                        CornerRadius="22"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Padding="20, 10"
+                        Command="{Binding RealizarPedidoCommand}"/>
+
+            </Grid>
+            
+        </Border>
+
+    </Grid>
+    
+</ContentPage>

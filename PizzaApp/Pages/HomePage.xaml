@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:PizzaApp.ViewModels"
+             xmlns:models="clr-namespace:PizzaApp.Models"
+             xmlns:toolKit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="PizzaApp.Pages.HomePage"
+             Title="Leo's Pizza"
+             Padding="15"
+             x:DataType="viewModels:HomeViewModel">
+    <ScrollView>
+        <VerticalStackLayout Spacing="15">
+            <Border StrokeShape="RoundRectangle 10"
+                    StrokeThickness="0"
+                    BackgroundColor="Goldenrod"
+                    VerticalOptions="Start"
+                    Padding="15">
+                <Grid ColumnDefinitions="*, 150"
+                      RowDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Row="0"
+                                         Grid.Column="0"
+                                         Spacing="20">
+                        <Label Text="Oferta del Dia"
+                               FontSize="35"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"/>
+                        <Label Text="Obten esta increible oferta antes de que se termine"
+                               FontSize="18"/>
+                    </VerticalStackLayout>
+                    <Button Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Comprar Ahora"
+                            BackgroundColor="PaleGoldenrod"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            CornerRadius="22"
+                            HorizontalOptions="Center"
+                            Padding="50, 0"/>
+                    <Image Grid.ColumnSpan="2"
+                           Grid.Column="1"
+                           HeightRequest="150"
+                           Source="pizzauno.png"/>
+                </Grid>
+                
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 22"
+                    StrokeThickness="2"
+                    Stroke="Goldenrod">
+
+                <Label Text="Buscar Aqui"
+                       TextColor="Goldenrod"
+                       FontSize="18"
+                       Padding="10, 15"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrATodasLasPizzasPaginaCommand}"
+                                          CommandParameter="{x:Boolean true}"/>
+                </Border.GestureRecognizers>
+
+            </Border>
+
+            <BoxView HeightRequest="15"
+                     Color="White"/>
+
+            <Grid ColumnDefinitions="*, *">
+
+                <Label Grid.Column="0"
+                       Text="Lo mas vendido"
+                       VerticalOptions="End"
+                       FontSize="25"
+                       FontAttributes="Bold"/>
+
+                <Label Grid.Column="1"
+                       Text="Mostrar todos"
+                       HorizontalOptions="End"
+                       VerticalOptions="End"
+                       FontSize="16"
+                       TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrATodasLasPizzasPaginaCommand}"
+                                              CommandParameter="{x:Boolean false}"/>
+                    </Label.GestureRecognizers>
+                    
+                </Label>
+            </Grid>
+
+            <FlexLayout BindableLayout.ItemsSource="{Binding Pizzas}"
+                        Wrap="Wrap">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:ModeloPizza">
+                        
+                        <Border FlexLayout.Basis="50%"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="0"
+                                BackgroundColor="PaleGoldenrod"
+                                Padding="10"
+                                Margin="2">
+                            <Grid RowDefinitions="150, Auto, auto, Auto"
+                                  RowSpacing="5">
+
+                                <Image Grid.Row="0"
+                                       Source="{Binding Imagen}"
+                                       HeightRequest="150"
+                                       WidthRequest="250"/>
+
+                                <Label Grid.Row="1"
+                                       Text="{Binding Nombre}"
+                                       HorizontalOptions="Center"
+                                       FontSize="20"/>
+
+                                <Grid Grid.Row="2"
+                                      ColumnDefinitions="*, *">
+                                    <Label Grid.Column="0"
+                                           Text="{Binding Precio, StringFormat='${0:N2}'}"
+                                           VerticalOptions="Center"
+                                           FontAttributes="Bold"/>
+                                    <HorizontalStackLayout Grid.Column="1"
+                                                           HorizontalOptions="End"
+                                                           VerticalOptions="Center"
+                                                           Spacing="2">
+                                        <Label Text="4"/>
+                                        <Image Source="star.png"
+                                               HeightRequest="15"
+                                               WidthRequest="15">
+
+                                            <Image.Behaviors>
+                                                <toolKit:IconTintColorBehavior TintColor="DarkGoldenrod"/>
+                                            </Image.Behaviors>
+                                        </Image>
+
+                                    </HorizontalStackLayout>
+                                </Grid>
+
+                                <Button Grid.Row="3"
+                                        Text="Ver mas"
+                                        BackgroundColor="Gold"
+                                        TextColor="Black"
+                                        CornerRadius="22"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="End"
+                                        HorizontalOptions="Center"
+                                        Padding="25, 0"
+                                        Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=IrADetallePageCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </Grid>
+
+                            <Border.GestureRecognizers>
+
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=IrADetallePageCommand}"
+                                                      CommandParameter="{Binding .}"/>
+
+                            </Border.GestureRecognizers>
+
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </VerticalStackLayout>
+        
+    </ScrollView>
+    
+</ContentPage>
